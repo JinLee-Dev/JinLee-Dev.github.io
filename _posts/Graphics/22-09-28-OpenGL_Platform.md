@@ -3,6 +3,7 @@ layout: single
 title:  "1_OpenGL과 플랫폼"
 category: OpenGL
 tag: OpenGL, Graphics
+comments : true
 ---
 
 업무를 하다 보면, Rendering API의 플랫폼과 관련된 내용을 간간히 접하게 됩니다. 최근에 이와 같은 내용을 다시 한 번 접하게 됐는데, 이번 기회에 플랫폼 관련한 내용을 알아두는게 좋을 것 같아 공부를 하고, 정리를 해 보았습니다.
