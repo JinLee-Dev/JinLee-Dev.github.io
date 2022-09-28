@@ -275,3 +275,6 @@ defaults:
       comments: # true
       share: true
       related: true
+
+# Disqus
+discus-identifier: jinlee-dev # add your discus identifier
