@@ -3,7 +3,7 @@ layout: single
 title:  "OpenGL과 플랫폼"
 category: OpenGL
 tag: OpenGL Graphics
-permalink: "/CMake/"
+permalink: "/OpenGL/"
 categories:
   - OpenGL
 date: 2022-09-29
