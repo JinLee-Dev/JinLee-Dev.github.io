@@ -10,8 +10,6 @@ main:
     sublinks:
       - title: C++
         url: /C++/
-      - title: CMake
-        url: /CMake/
-      - title: OpenGL
-        url: /OpenGL/
+      - title: Graphics
+        url: /Graphics/
       
