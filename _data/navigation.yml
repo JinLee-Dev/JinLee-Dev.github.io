@@ -6,4 +6,6 @@ main:
         url: /C++/
       - title: Graphics
         url: /Graphics/
+      - title: Algorithm
+        url: /Algorithm/
       
