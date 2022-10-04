@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Python으로 알고리즘 풀 때 팁!"
+title:  "알고리즘 - Table Of Contents"
 category: Algorithm
 tag: 
 permalink: "/Algorithm/"

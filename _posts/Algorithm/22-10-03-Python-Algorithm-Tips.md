@@ -29,3 +29,9 @@ node, link, start = map(int, sys.stdin.readline().split(' '))
 
 ## Python Queue는 Deque로 사용할 것
 * Queue는 멀티쓰레드 환경을 지원하고, Deque는 지원하지 않기 때문에 후자가 더 빠르다고 함.
+
+## 재귀할 때 Recursion Error 조심하기
+* 구현 중에 재귀를 쓸 때 아래 코드를 꼭 넣어줄 것
+```python
+sys.setrecursionlimit(10 ** 6)
+```
