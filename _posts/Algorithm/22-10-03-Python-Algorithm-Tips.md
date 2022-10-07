@@ -14,6 +14,7 @@ comments : true
 
 이에 대해 정리해 보려 합니다.
 
+---
 # 꿀팁
 ## Input 쉽게 넣는 법
 띄어쓰기로 구분된 int형 데이터 넣는 방법
@@ -22,6 +23,8 @@ node, link, start = map(int, sys.stdin.readline().split(' '))
 ```
 * <code>split()</code> : 함수 괄호 내 문자열을 기준으로 나눔.
 * <code>map()</code> : Split된 여러 input에 대해 일괄적으로 형변환을 함
+
+<br>
 
 # 주의해야 할 점
 ## Input 함수
@@ -35,3 +38,11 @@ node, link, start = map(int, sys.stdin.readline().split(' '))
 ```python
 sys.setrecursionlimit(10 ** 6)
 ```
+
+## 파이썬으로 무한대의 값을 표현하기
+* Python은 e나 E를 이용해서 지수를 표현할 수 있음.
+```python
+# 10의 9제곱
+1e9
+```
+* 만약 무한으로 사용할 수 있는 값이 10억 이하라면, 최단거리의 무한대의 거리를 1e9로 이용할 수 있다.
