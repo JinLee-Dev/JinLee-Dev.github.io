@@ -224,3 +224,71 @@ void glCullFace(GLenum mode);
 
 ![Untitled](/assets/img/Rasterization.png)
 
+## Fragment Shader
+Fragment Shader는 화면에 그려질 픽셀의 정보를 결정하는 과정입니다. Input은 Rasterization을 통해 나온 Fragment 이며, 계산의 결과는, 각 픽셀 마다 아래와 같은 정보를 포함하고 있습니다.
+
+* Raster Position
+* Depth
+* Interpolated attributes (Color, Texture, Coordinates..)
+* Stencil
+* Alpha
+
+
+계산 빈도는 픽셀 당 한번으로, 같은 연산을 Vertex Shader와 Fragment Shader에서 한다면, **Vertex Shader에서 하는게 훨씬 성능이 좋습니다.**
+
+위에서 말했듯이 필수 스테이지가 아닙니다. Fragment Shader가 없으면 정의되지 않은 Color값이 나오며, Depth, Stencil 값은 기존과 동일하게 나옵니다.
+
+## Per-Sample Processing
+Fragment Shader의 Output이 실제로 그려지기 전에 진행되는 계산입니다.
+
+### Pixel Ownership Test
+실제로 Fragment Shader의 결과 픽셀을 실제 모니터상의 픽셀에 그릴지 여부를 판단하는 테스트입니다. OpenGL 상에서는 그리더라도, 해당 지점을 그리는 Buffer가 특정 창에 의해 가려질 경우, OpenGL이 해당 픽셀을 사용하지 못할 수 있습니다. 사용하는 영역은 그리지 않도록 픽셀을 삭제하는 과정입니다.
+
+### Scissor Test
+지정한 영역만 그릴 수 있게 하는 Test입니다.
+기본적으로 Scissor Test는 꺼져 있습니다.
+
+### Stencil Test
+화면상에 그리는 Color Buffer 뿐만 아니라 OpenGL에서는 Z값을 나타낼 수 있는 Depth Buffer와 추가로 사용할 수 있는 Stencil Buffer도 있습니다. 해당 Buffer의 특정 영역을 마스킹 해서 요리 조리 사용하는 것이 Stencil Test 이며 아래와 같은 테스트를 할 수 있습니다.
+![Untitled](/assets/img/StencilTest.png)
+
+Stencil 계산이 성공하는 조건, 실패하는 조건도 지정할 수 있고, 성공했을 때 어떤 동작을 하는지, 실패했을 때 어떤 동작을 하는지도 지정할 수 있습니다.
+
+제가 개인적으로 생각했던 Stencli Buffer를 사용하는 좋은 예제는 아래 예시입니다. Triangulate를 하지 않고도 Stencil Buffer를 통해 도형 선형 그대로를 Input으로 그릴 수 있는 방법입니다. 혹시 관심 있으신 분들이라면 한번 아래 링크를 확인해주세요.
+* [Drawing Filled, Concave Polygons Using the Stencil Buffer (OpenGL Programming)](http://what-when-how.com/opengl-programming-guide/drawing-filled-concave-polygons-using-the-stencil-buffer-opengl-programming/).
+
+### Depth Test
+Stencil Test가 끝난 후 Depth Test를 수행합니다. Depth Test가 활성화 되면 Fragment의 깊이 값과 현재 버퍼의 깊이 값을 비교하여 원하는 연산을 수행할 수 있습니다.
+
+Stencil Test와 동일하게 Depth Test의 성공 조건을 정할 수 있으며, **성공시 현재 프래그먼트의 깊이값으로 갱신되며, 실패시 해당 픽셀이 버려집니다.**
+
+### Blending
+위 모든 테스트를 통과하면 이제 색상 블렌딩이 가능합니다.
+블렌딩을 사용하면 제공되는 여러 혼합 공식을 사용하여 기존 색상 버퍼값이나 상수값을 입력하여 원본 색상과 혼합할 수 있습니다.
+
+기존 결과값과 현재 버퍼의 색상 블렌딩이기 때문에 특정 도형끼리의 색상은 혼합할 수 없습니다.
+
+### Logical Operation
+기존 Frame Buffer 색상과 새로 들어오는 색상간의 논리 연산을 수행하는 과정입니다. Blending과의 차이점이라고 한다면, Blending은 특정한 공식에 의해 색이 바뀌는 거고, Logical Operation은 색상에 대한 논리 연산이 수행됩니다.
+
+참고로, Blending과 Logical Operation은 동시에 활성화 되지 않습니다.
+
+```cpp
+glLogicOp(GLenum opcode);
+```
+
+### Masking
+Color, Depth, Stencil 결과를 프레임 버퍼 상에 쓸지 말지 판단하는 과정입니다.
+* Color Mask
+    ```cpp
+    void glColorMask(GLboolean red, GLboolean green, GLboolean blue, GLboolean alpha);
+void glColorMaski(GLuint buf, GLboolean red, GLboolean green, GLboolean blue, GLboolean alpha);
+    ```
+* DepthMask
+    ```cpp
+    void glDepthMask(GLboolean flag);
+    ```
+* Stencil Mask
+    ```cpp
+    void glStencilMask(GLuint mask);
+    ```
