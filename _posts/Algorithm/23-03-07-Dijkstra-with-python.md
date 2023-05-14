@@ -14,6 +14,7 @@ comments : true
 구현 방법은 2가지가 있는데, 무조건 개선된 것을 사용할 것.
 
 ```python
+import heapq
 def Dijkstra( graph, dist, start):
     q = []
     heapq.heappush(q, (0, start))
