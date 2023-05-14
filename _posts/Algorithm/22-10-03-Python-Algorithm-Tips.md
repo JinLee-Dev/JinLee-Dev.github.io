@@ -46,3 +46,63 @@ sys.setrecursionlimit(10 ** 6)
 1e9
 ```
 * 만약 무한으로 사용할 수 있는 값이 10억 이하라면, 최단거리의 무한대의 거리를 1e9로 이용할 수 있다.
+
+## Custom Sort function
+cmp_to_key를 이용해서 custom sorting 가능
+
+```python
+from functools import cmp_to_key
+def comparator_by_number(number1, number2):
+    if (number1 + number2) > (number2 + number1):
+        return -1
+    elif (number1 + number2) < (number2 + number1):
+        return 1
+    else:
+        return 0
+v.sort(key=cmp_to_key(comparator_by_number))
+```
+
+## String을 List로 나누기
+간단히 형변환만 하면 됨
+```python
+str="python"
+# ['p', 'y', 't', 'h', 'o', 'n']
+lstr = list(str)
+```
+
+## 문자열 나누기와 결합
+* 문자열 나누기 : split("나눌 기준 문자")
+    * 공백 기준으로 
+    ```python
+    str="py thon"
+    # ['py', 'thon']
+    lstr = str.split()
+    ```
+
+    * 문자 기준으로
+        ```python
+        str="python"
+        # ['pyth', 'n']
+        lstr = str.split("o")
+        ```
+
+* 문자열 합치기 : join
+    * 공백 더해서 합치기
+    ```python
+    l = ['pyth', 'on']
+    # lstr = ['pyth on']
+    lstr = " ".join(l)
+    ```
+    * 딕셔너리
+    ```python
+    l = {'key1':'py', 'key2':'thon'}
+    # lstr = ['key1 key2']
+    lstr = " ".join(l)
+
+    # lstr = ['key1 key2']
+    lstr = " ".join(l.keys())
+
+    # lstr = ['py thon']
+    lstr = " ".join(l.values())
+    ```
+    
