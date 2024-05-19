@@ -127,3 +127,24 @@ lstr = list(str)
     # [[[0], [0]], [[0], [0]], [[0], [0]]
     a = [[[0 for z in range(1)] for y in range(2)] for x in range(3)]
     ```
+
+## 반복문
+* 범위기반 반복문
+    ```python
+    b = [1, 2, 3]
+    # 1, 2, 3
+    for i in b:
+        print(i)
+    ```
+
+* index 기반 반복문
+    ```python
+    b = [1, 2, 3]
+    # 1, 2, 3
+    for i in range(3):
+        print(b[i])
+
+    # 역방향
+    for i in range(2, -1, -1):
+        print(b[i])
+    ```
