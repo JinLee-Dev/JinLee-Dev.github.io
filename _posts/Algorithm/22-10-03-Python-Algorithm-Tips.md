@@ -88,21 +88,42 @@ lstr = list(str)
 
 * 문자열 합치기 : join
     * 공백 더해서 합치기
-    ```python
-    l = ['pyth', 'on']
-    # lstr = ['pyth on']
-    lstr = " ".join(l)
-    ```
+        ```python
+        l = ['pyth', 'on']
+        # lstr = ['pyth on']
+        lstr = " ".join(l)
+        ```
+
     * 딕셔너리
+        ```python
+        l = {'key1':'py', 'key2':'thon'}
+        # lstr = ['key1 key2']
+        lstr = " ".join(l)
+
+        # lstr = ['key1 key2']
+        lstr = " ".join(l.keys())
+
+        # lstr = ['py thon']
+        lstr = " ".join(l.values())
+        ```
+
+## 다중 배열 선언
+* 크기를 지정해서 배열 선언
     ```python
-    l = {'key1':'py', 'key2':'thon'}
-    # lstr = ['key1 key2']
-    lstr = " ".join(l)
-
-    # lstr = ['key1 key2']
-    lstr = " ".join(l.keys())
-
-    # lstr = ['py thon']
-    lstr = " ".join(l.values())
+    # [None, None, None, None, None]
+    a = [None] * 5
+    # [0, 0, 0]
+    b = [0] * 3
     ```
     
+* 이중 배열
+    ```python
+    # 리스트 안에 리스트가 들어가 있는 형태
+    a = [[]]
+
+    # [[False, False, False], [False, False, False]]
+    a = [[False for col in range(3)] for row in range(2)]
+
+    # [[[0], [0]], [[0], [0]], [[0], [0]]
+    a = [[[0 for z in range(1)] for y in range(2)] for x in range(3)]
+    ```
