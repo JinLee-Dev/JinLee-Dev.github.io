@@ -24,6 +24,12 @@ node, link, start = map(int, sys.stdin.readline().split(' '))
 * <code>split()</code> : 함수 괄호 내 문자열을 기준으로 나눔.
 * <code>map()</code> : Split된 여러 input에 대해 일괄적으로 형변환을 함
 
+## 백준에서 \n이 귀찮게 들어가는 문제 수정
+* rstrip을 사용해주자
+```python
+s = str(sys.stdin.readline().rstrip())
+```
+
 <br>
 
 # 주의해야 할 점
@@ -107,6 +113,14 @@ lstr = list(str)
         lstr = " ".join(l.values())
         ```
 
+* 숫자 자리수 나누기
+    ```python
+    a = []
+    number = 123
+    for i in str(number):
+        a.append(i)
+    ```
+
 ## 다중 배열 선언
 * 크기를 지정해서 배열 선언
     ```python
@@ -148,3 +162,12 @@ lstr = list(str)
     for i in range(2, -1, -1):
         print(b[i])
     ```
+
+## 파이썬 출력시 줄 바꿈 없이 출력
+```python
+print("안녕하세요", end='')
+```
+
+## 슬라이싱
+* 슬라이싱은 생각보다 시간복잡도가 크다.
+* 시간 초과 났을 때 슬라이싱을 없앨 수 있는 방법을 찾아볼 것.
