@@ -10,4 +10,6 @@ main:
         url: /Algorithm/
       - title: Python
         url: /Python/
+      - title: TIL
+        url: /TIL/
       

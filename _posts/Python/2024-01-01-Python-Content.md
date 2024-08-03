@@ -1,5 +1,5 @@
 ---
-title: "C++ - Table of Contents"
+title: "Python - Table of Contents"
 tags: [Python]
 permalink: "/Python/"
 categories:
