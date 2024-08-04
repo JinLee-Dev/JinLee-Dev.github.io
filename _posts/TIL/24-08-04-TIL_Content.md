@@ -12,3 +12,4 @@ date: 2024-08-04
 ## Table of Contents
 * [TIL_240802]({% post_url 2024-08-02-TIL_240802 %})
 * [TIL_240803]({% post_url 2024-08-03-TIL_240803 %})
+* [TIL_240804]({% post_url 2024-08-04-TIL_240804 %})
