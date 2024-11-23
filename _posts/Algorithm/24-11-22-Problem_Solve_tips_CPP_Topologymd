@@ -1,0 +1,51 @@
+---
+layout: single
+title:  "위상정렬 - CPP"
+category: Algorithm
+tags: [Algorithm, CPP]
+date: 2024-11-22
+comments : true
+---
+
+## 위상정렬
+* 방향 그래프에서 간선으로 주어진 정점 간 선후관계를 위배하지 않도록 나열하는 정렬
+
+## 구현
+* 특정한 노드의 연결 횟수를 `indegree` 변수에 추가한다
+    * 예를 들어 1 -> 2와의 연결이 이루어진 경우, `indegree[2]`의 연결을 추가한다.
+* indegree = 0인 값들을 전부 큐에 넣어준다.
+* 큐에서 값을 꺼내면서 꺼낸 값과 연결된 노드들의 indegree를 1씩 낮춰준다.
+* 다시 indegree = 0인 값들을 큐에 넣어준다.
+* 큐의 값이 없을 때까지 반복한다.
+* 노드의 수와 위상정렬로 잡힌 노드의 수가 다를 경우 사이클이 있다는 것.
+
+## CPP로의 구현
+```cpp
+#include <iostream>
+#include <algorithm>
+
+int n = 5;
+vector<int> indegree(6, 0);
+vector<int> adj(6, 0);
+queue<int> q;
+
+vector<int> answer;
+// 그래프 만든 후
+for(int i = 1; i <= 5; i++){
+    if(indegree[i] == 0){
+        q.push(i);
+    }
+}
+
+while (!q.empty()){
+    int v = q.front(); q.pop();
+    answer.push_back(v);
+    for(auto &it : adj[v]){
+        indegree[it]--;
+        if(indegree[it] == 0){
+            q.push(it);
+        }
+    }
+}
+
+```
